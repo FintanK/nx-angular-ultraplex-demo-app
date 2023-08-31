@@ -1,2 +1,12 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <org-sidenav-list (closeSideNav)="sidenav.close()"></org-sidenav-list>
+  </mat-sidenav>
 
-<router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <org-toolbar (sideNavToggle)="sidenav.toggle()"></org-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
