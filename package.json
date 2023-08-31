@@ -6,7 +6,7 @@
     "nx": "nx",
     "start": "nx serve ultraplex",
     "build": "nx build ultraplex",
-    "test": "nx test",
+    "test": "nx test ultraplex",
     "lint": "nx lint",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
