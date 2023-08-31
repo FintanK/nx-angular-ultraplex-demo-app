@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/material": ["libs/material/src/index.ts"]
+      "@org/bookings": ["libs/bookings/src/index.ts"],
+      "@org/cinemas": ["libs/cinemas/src/index.ts"],
+      "@org/material": ["libs/material/src/index.ts"],
+      "@org/movies": ["libs/movies/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

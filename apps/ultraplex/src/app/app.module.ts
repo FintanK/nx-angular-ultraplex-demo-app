@@ -6,20 +6,21 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BookingsModule } from '@org/bookings';
+import { CinemasModule } from '@org/cinemas';
 import { MaterialModule } from '@org/material';
+import { MoviesModule } from '@org/movies';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    SidenavListComponent,
-  ],
   imports: [
     BrowserModule,
+    CinemasModule,
+    BookingsModule,
+    MoviesModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
     MaterialModule,
@@ -37,6 +38,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
   ],
+  declarations: [AppComponent, ToolbarComponent, SidenavListComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
