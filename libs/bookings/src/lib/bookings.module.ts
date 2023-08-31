@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromBookings from './+state/bookings.reducer';
 import { BookingsEffects } from './+state/bookings.effects';
 import { BookingsFacade } from './+state/bookings.facade';
+import { BookingsComponent } from './components/bookings/bookings.component';
 
 @NgModule({
   imports: [
@@ -16,5 +17,7 @@ import { BookingsFacade } from './+state/bookings.facade';
     EffectsModule.forFeature([BookingsEffects]),
   ],
   providers: [BookingsFacade],
+  declarations: [BookingsComponent],
+  exports: [BookingsComponent],
 })
 export class BookingsModule {}

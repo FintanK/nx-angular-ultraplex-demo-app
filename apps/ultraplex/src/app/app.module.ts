@@ -14,6 +14,12 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -37,8 +43,13 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
   ],
-  declarations: [AppComponent, ToolbarComponent, SidenavListComponent],
+  declarations: [AppComponent, ToolbarComponent, SidenavListComponent, DashboardComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

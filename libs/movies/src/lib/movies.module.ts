@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromMovies from './+state/movies.reducer';
 import { MoviesEffects } from './+state/movies.effects';
 import { MoviesFacade } from './+state/movies.facade';
+import { MoviesComponent } from './components/movies/movies.component';
 
 @NgModule({
   imports: [
@@ -16,5 +17,7 @@ import { MoviesFacade } from './+state/movies.facade';
     EffectsModule.forFeature([MoviesEffects]),
   ],
   providers: [MoviesFacade],
+  declarations: [MoviesComponent],
+  exports: [MoviesComponent],
 })
 export class MoviesModule {}
