@@ -1,18 +1,28 @@
 import { Injectable, inject } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, catchError, of } from 'rxjs';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, of, switchMap } from 'rxjs';
+import { BookingsService } from '../services/bookings.service';
 import * as BookingsActions from './bookings.actions';
-import * as BookingsFeature from './bookings.reducer';
 
 @Injectable()
 export class BookingsEffects {
   private actions$ = inject(Actions);
 
+  constructor(public bookingsService: BookingsService) {}
+
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BookingsActions.initBookings),
       switchMap(() =>
-        of(BookingsActions.loadBookingsSuccess({ bookings: [] }))
+        this.bookingsService.getBookings().pipe(
+          switchMap((bookings: any) => {
+            return [
+              BookingsActions.loadBookingsSuccess({
+                bookings: bookings.content,
+              }),
+            ];
+          })
+        )
       ),
       catchError((error) => {
         console.error('Error', error);

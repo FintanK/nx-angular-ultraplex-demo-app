@@ -6,10 +6,12 @@ import * as fromMovies from './+state/movies.reducer';
 import { MoviesEffects } from './+state/movies.effects';
 import { MoviesFacade } from './+state/movies.facade';
 import { MoviesComponent } from './components/movies/movies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     StoreModule.forFeature(
       fromMovies.MOVIES_FEATURE_KEY,
       fromMovies.moviesReducer

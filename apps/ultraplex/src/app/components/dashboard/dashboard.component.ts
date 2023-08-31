@@ -1,19 +1,26 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, inject } from '@angular/core';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { map } from 'rxjs/operators';
+import { BookingsFacade } from '@org/bookings';
 import { CinemasFacade } from '@org/cinemas';
+import { MoviesFacade } from '@org/movies';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'org-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
-
-  constructor(public cinemasFacade: CinemasFacade) {
+  constructor(
+    public cinemasFacade: CinemasFacade,
+    public bookingsFacade: BookingsFacade,
+    public moviesFacade: MoviesFacade
+  ) {
     this.cinemasFacade.init();
+    this.bookingsFacade.init();
+    this.moviesFacade.init();
   }
 
   /** Based on the screen size, switch from standard to one column per row */
@@ -24,7 +31,7 @@ export class DashboardComponent {
           { title: 'Cinemas', cols: 1, rows: 1 },
           { title: 'Screens', cols: 1, rows: 1 },
           { title: 'Movies', cols: 1, rows: 1 },
-          { title: 'Bookings', cols: 1, rows: 1 }
+          { title: 'Bookings', cols: 1, rows: 1 },
         ];
       }
 
@@ -32,7 +39,7 @@ export class DashboardComponent {
         { title: 'Card 1', cols: 2, rows: 1 },
         { title: 'Card 2', cols: 1, rows: 1 },
         { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Card 4', cols: 1, rows: 1 },
       ];
     })
   );

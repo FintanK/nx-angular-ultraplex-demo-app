@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class BookingsService {
 
-  constructor() { }
+  constructor(public http: HttpClient) {}
+
+  getBookings() {
+    return this.http.get(
+      'https://develop.hybrid.iov99.com/ultraplex/api/v1/bookings'
+    );
+  }
 }

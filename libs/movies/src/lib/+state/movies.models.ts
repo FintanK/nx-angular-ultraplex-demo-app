@@ -4,4 +4,5 @@
 export interface MoviesEntity {
   id: string | number; // Primary ID
   name: string;
+  runtime: number;
 }
