@@ -12,3 +12,7 @@ export const loadCinemasFailure = createAction(
   '[Cinemas/API] Load Cinemas Failure',
   props<{ error: any }>()
 );
+
+export const addNewCinema = createAction('[Cinemas Page] Add New Cinema', props<{ cinemaName: string }>());
+export const addNewCinemaSuccess = createAction('[Cinemas/API] Add New Cinema Success');
+export const addNewCinemaFailure = createAction('[Cinemas/API] Add New Cinema Failure', props<{ error: any }>());

@@ -9,10 +9,12 @@ import { CinemasComponent } from './components/cinemas/cinemas.component';
 import { CinemasService } from './services/cinemas.service';
 import { MaterialModule } from '@org/material';
 import { ScreensComponent } from './components/screens/screens.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     StoreModule.forFeature(
       fromCinemas.CINEMAS_FEATURE_KEY,
       fromCinemas.cinemasReducer

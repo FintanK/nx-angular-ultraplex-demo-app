@@ -24,4 +24,10 @@ export class CinemasFacade {
   init() {
     this.store.dispatch(CinemasActions.initCinemas());
   }
+
+  addNewCinema(newCinemaName: string) {
+    this.store.dispatch(CinemasActions.addNewCinema({
+      cinemaName: newCinemaName
+    }));
+  }
 }

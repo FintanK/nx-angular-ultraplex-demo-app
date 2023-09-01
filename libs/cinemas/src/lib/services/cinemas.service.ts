@@ -12,4 +12,14 @@ export class CinemasService {
       'https://develop.hybrid.iov99.com/ultraplex/api/v1/cinemas?size=1000'
     );
   }
+
+  addNewCinema(name: string) {
+    return this.http.put(
+      'https://develop.hybrid.iov99.com/ultraplex/api/v1/cinemas',
+      {
+        name,
+      }
+    );
+  }
+
 }
