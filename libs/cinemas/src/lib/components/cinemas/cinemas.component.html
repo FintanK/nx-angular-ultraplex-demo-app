@@ -1,1 +1,22 @@
-<p>cinemas works!</p>
+<div class="container">
+  <h2>Cinemas</h2>
+  <p>All cinemas.</p>
+  <button class="add-cinema" mat-fab color="primary" aria-label="Add a cinema">
+    <mat-icon>add</mat-icon>
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cinema of cinemas$ | async">
+        <td>{{ cinema.id }}</td>
+        <td>{{ cinema.name }}</td>
+        <td><a mat-raised-button color="primary" href="cinemas/{{cinema.id}}/screens">View Screens</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

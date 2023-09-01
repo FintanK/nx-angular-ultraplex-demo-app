@@ -7,6 +7,8 @@ import { CinemasFacade } from '../../+state/cinemas.facade';
   styleUrls: ['./cinemas.component.css'],
 })
 export class CinemasComponent {
+  cinemas$ = this.cinemasFacade.allCinemas$;
+
   constructor(public cinemasFacade: CinemasFacade) {
     this.cinemasFacade.init();
   }

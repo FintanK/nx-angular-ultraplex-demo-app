@@ -1,1 +1,31 @@
-<p>movies works!</p>
+<div class="container">
+  <h2>Movies</h2>
+  <p>All movies.</p>
+  <button class="add-movie" mat-fab color="primary" aria-label="Add a movie">
+    <mat-icon>add</mat-icon>
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies$ | async">
+        <td class="movie-details">{{ movie.id }}</td>
+        <td class="movie-details">{{ movie.name }}</td>
+        <td>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Delete movie"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

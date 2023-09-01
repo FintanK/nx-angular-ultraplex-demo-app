@@ -1,0 +1,23 @@
+<div class="container">
+    <h2><a routerLink="/cinemas">Cinemas</a> > Screens</h2>
+    <p>All screens for cinema ID: {{id}}.</p>
+    <button class="add-screen" mat-fab color="primary" aria-label="Add a screen for this cinema">
+      <mat-icon>add</mat-icon>
+    </button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let screen of screens">
+          <td>{{ screen.id }}</td>
+          <td>{{ screen.name }}</td>
+          <td><a mat-raised-button color="primary">Create a screening <mat-icon>add</mat-icon></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

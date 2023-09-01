@@ -7,6 +7,8 @@ import { CinemasEffects } from './+state/cinemas.effects';
 import { CinemasFacade } from './+state/cinemas.facade';
 import { CinemasComponent } from './components/cinemas/cinemas.component';
 import { CinemasService } from './services/cinemas.service';
+import { MaterialModule } from '@org/material';
+import { ScreensComponent } from './components/screens/screens.component';
 
 @NgModule({
   imports: [
@@ -16,9 +18,10 @@ import { CinemasService } from './services/cinemas.service';
       fromCinemas.cinemasReducer
     ),
     EffectsModule.forFeature([CinemasEffects]),
+    MaterialModule,
   ],
   providers: [CinemasFacade, CinemasService],
-  declarations: [CinemasComponent],
-  exports: [CinemasComponent],
+  declarations: [CinemasComponent, ScreensComponent],
+  exports: [CinemasComponent, ScreensComponent],
 })
 export class CinemasModule {}

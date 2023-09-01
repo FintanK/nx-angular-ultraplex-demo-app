@@ -8,5 +8,7 @@ export * from './lib/+state/movies.facade';
 
 export * from './lib/+state/movies.models';
 
-export { MoviesActions, MoviesFeature, MoviesSelectors };
+export { MovieComponent } from './lib/components/movie/movie.component';
+export { MoviesComponent } from './lib/components/movies/movies.component';
 export * from './lib/movies.module';
+export { MoviesActions, MoviesFeature, MoviesSelectors };

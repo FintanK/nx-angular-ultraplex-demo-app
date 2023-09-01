@@ -40,6 +40,15 @@ nx run-many -t <target1> <target2> -p <proj1> <proj2>
 
 Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-tasks).
 
-## Ready to deploy?
+## Outstanding tasks
 
-Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
+- Dashboard with number of cinemas, screens, movies and bookings.
+- Pagination
+- Add a new cinema
+- Add a new screen for a specific cinema
+- Add a new movie
+- Add a new screening for a specific movie and screen
+- Add a new booking for a specific screening and the number of seats
+
+- Unit Tests with code coverage
+- Cypress tests.

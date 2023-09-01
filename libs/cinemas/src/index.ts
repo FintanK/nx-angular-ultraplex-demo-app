@@ -8,5 +8,9 @@ export * from './lib/+state/cinemas.facade';
 
 export * from './lib/+state/cinemas.models';
 
-export { CinemasActions, CinemasFeature, CinemasSelectors };
 export * from './lib/cinemas.module';
+
+export { CinemasComponent } from './lib/components/cinemas/cinemas.component';
+export { ScreensComponent } from './lib/components/screens/screens.component';
+
+export { CinemasActions, CinemasFeature, CinemasSelectors };

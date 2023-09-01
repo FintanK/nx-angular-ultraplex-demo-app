@@ -7,11 +7,14 @@ import { MoviesEffects } from './+state/movies.effects';
 import { MoviesFacade } from './+state/movies.facade';
 import { MoviesComponent } from './components/movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieComponent } from './components/movie/movie.component';
+import { MaterialModule } from '@org/material';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    MaterialModule,
     StoreModule.forFeature(
       fromMovies.MOVIES_FEATURE_KEY,
       fromMovies.moviesReducer
@@ -19,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     EffectsModule.forFeature([MoviesEffects]),
   ],
   providers: [MoviesFacade],
-  declarations: [MoviesComponent],
-  exports: [MoviesComponent],
+  declarations: [MoviesComponent, MovieComponent],
+  exports: [MoviesComponent, MovieComponent],
 })
 export class MoviesModule {}

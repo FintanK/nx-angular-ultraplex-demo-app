@@ -9,7 +9,7 @@ export class MoviesService {
 
   getMovies() {
     return this.http.get(
-      'https://develop.hybrid.iov99.com/ultraplex/api/v1/movies'
+      'https://develop.hybrid.iov99.com/ultraplex/api/v1/movies?size=1000'
     );
   }
 }

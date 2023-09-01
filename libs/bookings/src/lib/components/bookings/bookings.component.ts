@@ -7,6 +7,10 @@ import { BookingsFacade } from '../../+state/bookings.facade';
   styleUrls: ['./bookings.component.css'],
 })
 export class BookingsComponent {
+
+  bookings$ = this.bookingsFacade.allBookings$;
+
+
   constructor(public bookingsFacade: BookingsFacade) {
     this.bookingsFacade.init();
   }
