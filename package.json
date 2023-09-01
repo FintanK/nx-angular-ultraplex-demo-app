@@ -40,6 +40,7 @@
     "@ngrx/router-store": "~16.0.0",
     "@ngrx/store": "~16.0.0",
     "@nx/angular": "16.7.4",
+    "bootstrap": "^5.3.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -54,7 +55,6 @@
     "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "~16.2.0",
     "@angular/language-service": "~16.2.0",
-
     "@ngrx/schematics": "~16.0.0",
     "@ngrx/store-devtools": "~16.0.0",
     "@nx/cypress": "16.7.4",
