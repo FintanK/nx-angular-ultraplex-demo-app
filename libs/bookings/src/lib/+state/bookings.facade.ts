@@ -24,4 +24,13 @@ export class BookingsFacade {
   init() {
     this.store.dispatch(BookingsActions.initBookings());
   }
+
+  addNewBooking(screeningId: number, seats: number) {
+    this.store.dispatch(
+      BookingsActions.addNewBooking({
+        screeningId,
+        seats,
+      })
+    );
+  }
 }

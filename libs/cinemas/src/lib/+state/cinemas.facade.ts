@@ -26,8 +26,19 @@ export class CinemasFacade {
   }
 
   addNewCinema(newCinemaName: string) {
-    this.store.dispatch(CinemasActions.addNewCinema({
-      cinemaName: newCinemaName
-    }));
+    this.store.dispatch(
+      CinemasActions.addNewCinema({
+        cinemaName: newCinemaName,
+      })
+    );
+  }
+
+  addNewScreen(newScreenName: string, cinemaId: number) {
+    this.store.dispatch(
+      CinemasActions.addNewScreen({
+        screenName: newScreenName,
+        cinemaId,
+      })
+    );
   }
 }

@@ -7,11 +7,17 @@ import { BookingsFacade } from '../../+state/bookings.facade';
   styleUrls: ['./bookings.component.css'],
 })
 export class BookingsComponent {
-
   bookings$ = this.bookingsFacade.allBookings$;
 
+  newBookingName!: string;
+  numSeats!: number;
+  screeningId!: number;
 
   constructor(public bookingsFacade: BookingsFacade) {
     this.bookingsFacade.init();
+  }
+
+  addNewBooking() {
+    this.bookingsFacade.addNewBooking(this.screeningId, this.numSeats);
   }
 }

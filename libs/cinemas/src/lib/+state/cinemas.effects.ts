@@ -39,14 +39,47 @@ export class CinemasEffects {
         return this.cinemasService.addNewCinema(action.cinemaName).pipe(
           switchMap(() => {
             this._snackBar.open('Cinema Added Successfully', 'Close');
-            return [CinemasActions.addNewCinemaSuccess(), CinemasActions.initCinemas()];
+            return [
+              CinemasActions.addNewCinemaSuccess(),
+              CinemasActions.initCinemas(),
+            ];
           })
         );
       }),
       catchError((error) => {
         console.error('Error', error);
-        this._snackBar.open('There was an issue adding the new cinema, please try again', 'Close');
+        this._snackBar.open(
+          'There was an issue adding the new cinema, please try again',
+          'Close'
+        );
         return of(CinemasActions.addNewCinemaFailure({ error }));
+      })
+    )
+  );
+
+  addNewScreen$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CinemasActions.addNewScreen),
+      switchMap((action) => {
+        return this.cinemasService
+          .addNewScreen(action.cinemaId.toString(), action.screenName)
+          .pipe(
+            switchMap(() => {
+              this._snackBar.open('Screen Added Successfully', 'Close');
+              return [
+                CinemasActions.addNewScreenSuccess(),
+                CinemasActions.initCinemas(),
+              ];
+            })
+          );
+      }),
+      catchError((error) => {
+        console.error('Error', error);
+        this._snackBar.open(
+          'There was an issue adding the new screen, please try again',
+          'Close'
+        );
+        return of(CinemasActions.addNewScreenFailure({ error }));
       })
     )
   );

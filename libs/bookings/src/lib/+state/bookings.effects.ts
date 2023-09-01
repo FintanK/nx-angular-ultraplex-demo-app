@@ -30,4 +30,26 @@ export class BookingsEffects {
       })
     )
   );
+
+  addNewBooking$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BookingsActions.addNewBooking),
+      switchMap((action) => {
+        return this.bookingsService
+          .addBooking(action.screeningId.toString(), action.seats)
+          .pipe(
+            switchMap(() => {
+              return [
+                BookingsActions.addNewBookingSuccess(),
+                BookingsActions.initBookings(),
+              ];
+            })
+          );
+      }),
+      catchError((error) => {
+        console.error('Error', error);
+        return of(BookingsActions.addNewBookingFailure({ error }));
+      })
+    )
+  );
 }

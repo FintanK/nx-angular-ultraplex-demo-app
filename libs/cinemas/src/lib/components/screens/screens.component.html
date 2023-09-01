@@ -1,23 +1,30 @@
 <div class="container">
-    <h2><a href="/cinemas">Cinemas</a> > Screens</h2>
-    <p>All screens for cinema ID: {{id}}.</p>
-    <button class="add-screen" mat-fab color="primary" aria-label="Add a screen for this cinema">
-      <mat-icon>add</mat-icon>
-    </button>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let screen of screens">
-          <td>{{ screen.id }}</td>
-          <td>{{ screen.name }}</td>
-          <td><a mat-raised-button color="primary">Create a screening <mat-icon>add</mat-icon></a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <h2><a href="/cinemas">Cinemas</a> > Screens</h2>
+  <p>All screens for cinema ID: {{ id }}.</p>
+  <mat-form-field appearance="fill">
+    <mat-label>New Screen Name</mat-label>
+    <input matInput placeholder="Placeholder" [(ngModel)]="newScreenName" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addNewScreen()">
+    Add Screen for Cinema
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let screen of screens">
+        <td>{{ screen.id }}</td>
+        <td>{{ screen.name }}</td>
+        <td>
+          <a mat-raised-button color="primary"
+            >Create a screening <mat-icon>add</mat-icon></a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

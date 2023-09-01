@@ -12,6 +12,8 @@ export class ScreensComponent implements OnInit {
   id: string | null = null;
   screens: ScreenEntity[] = [];
 
+  newScreenName!: string;
+
   constructor(
     public route: ActivatedRoute,
     public cinemaFacade: CinemasFacade
@@ -26,9 +28,16 @@ export class ScreensComponent implements OnInit {
       this.cinemaFacade.allCinemas$.subscribe((cinemas) => {
         if (this.id && this.id !== null) {
           this.screens =
-            cinemas.find((cinema) => cinema.id.toString() === this.id)?.screens || [];
+            cinemas.find((cinema) => cinema.id.toString() === this.id)
+              ?.screens || [];
         }
       });
     });
+  }
+
+  addNewScreen() {
+    if (this.id && this.id !== null) {
+      this.cinemaFacade.addNewScreen(this.newScreenName, parseInt(this.id));
+    }
   }
 }

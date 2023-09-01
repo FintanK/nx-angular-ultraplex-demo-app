@@ -9,7 +9,7 @@ export class CinemasService {
 
   getCinemas() {
     return this.http.get(
-      'https://develop.hybrid.iov99.com/ultraplex/api/v1/cinemas?size=1000'
+      'https://develop.hybrid.iov99.com/ultraplex/api/v1/cinemas?size=1000&sort=id,asc'
     );
   }
 
@@ -22,4 +22,12 @@ export class CinemasService {
     );
   }
 
+  addNewScreen(cinemaId: string, name: string) {
+    return this.http.put(
+      `https://develop.hybrid.iov99.com/ultraplex/api/v1/cinemas/${cinemaId}/screens`,
+      {
+        name,
+      }
+    );
+  }
 }

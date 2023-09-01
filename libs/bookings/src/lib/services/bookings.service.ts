@@ -12,4 +12,14 @@ export class BookingsService {
       'https://develop.hybrid.iov99.com/ultraplex/api/v1/bookings?size=1000'
     );
   }
+
+  addBooking(screeningId: string, seats: number) {
+    return this.http.put(
+      `https://develop.hybrid.iov99.com/ultraplex/api/v1/bookings`,
+      {
+        screeningId,
+        seats,
+      }
+    );
+  }
 }
