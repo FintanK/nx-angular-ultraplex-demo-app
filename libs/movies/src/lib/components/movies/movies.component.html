@@ -1,9 +1,11 @@
 <div class="container">
   <h2>Movies</h2>
   <p>All movies.</p>
-  <button class="add-movie" mat-fab color="primary" aria-label="Add a movie">
-    <mat-icon>add</mat-icon>
-  </button>
+  <mat-form-field appearance="fill">
+    <mat-label>New Movie Name</mat-label>
+    <input matInput placeholder="Placeholder" [(ngModel)]="newMovieName" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addNewMovie()" >Add Movie</button>
   <table class="table">
     <thead>
       <tr>

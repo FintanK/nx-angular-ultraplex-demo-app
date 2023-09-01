@@ -24,4 +24,9 @@ export class MoviesFacade {
   init() {
     this.store.dispatch(MoviesActions.initMovies());
   }
+  addNewMovie(newMovieName: string) {
+    this.store.dispatch(MoviesActions.addNewMovie({
+      movieName: newMovieName
+    }));
+  }
 }

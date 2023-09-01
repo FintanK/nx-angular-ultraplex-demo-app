@@ -9,7 +9,13 @@ import { MoviesFacade } from '../../+state/movies.facade';
 export class MoviesComponent {
   movies$ = this.moviesFacade.allMovies$;
 
+  newMovieName!: string;
+
   constructor(public moviesFacade: MoviesFacade) {
     this.moviesFacade.init();
+  }
+
+  addNewMovie() {
+    this.moviesFacade.addNewMovie(this.newMovieName);
   }
 }
