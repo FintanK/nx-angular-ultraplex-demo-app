@@ -5,9 +5,10 @@
   "scripts": {
     "start": "npx nx serve ultraplex",
     "build": "npx nx build ultraplex",
-    "test": "npx nx test ultraplex",
-    "lint": "npx nx lint",
-    "e2e": "npx nx e2e",
+    "test": "npx nx test ultraplex --codeCoverage",
+    "lint": "npx nx lint ultraplex",
+    "e2e": "npx nx e2e ultraplex-e2e --watch",
+    "e2e:headless": "npx nx e2e ultraplex-e2e",
     "affected:apps": "npx nx affected:apps",
     "affected:libs": "npx nx affected:libs",
     "affected:build": "npx nx affected:build",

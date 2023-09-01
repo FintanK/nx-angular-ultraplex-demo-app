@@ -1,13 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '@org/material';
+import { AppComponent } from './app.component';
+import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent, NxWelcomeComponent],
+      imports: [RouterTestingModule, MaterialModule, NoopAnimationsModule],
+      declarations: [AppComponent, SidenavListComponent, ToolbarComponent],
     }).compileComponents();
   });
 
@@ -15,14 +18,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome ultraplex'
+    expect(compiled.querySelector('a.logo')?.textContent).toContain(
+      'Ultraplex Cinemas'
     );
-  });
-
-  it(`should have as title 'ultraplex'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('ultraplex');
   });
 });

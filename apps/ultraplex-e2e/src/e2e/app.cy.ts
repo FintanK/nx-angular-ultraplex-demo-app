@@ -1,13 +1,11 @@
-import { getGreeting } from '../support/app.po';
-
 describe('ultraplex', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('should display the application name', () => {
+    cy.get('a.logo').contains('Ultraplex Cinemas');
+  });
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome ultraplex');
+  it('should display the cards', () => {
+    cy.get('.card').should( 'have.length', 4);
   });
 });

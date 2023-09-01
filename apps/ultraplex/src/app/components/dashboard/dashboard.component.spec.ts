@@ -1,12 +1,13 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 
+import { CinemasFacade } from '@org/cinemas';
+import { MaterialModule } from '@org/material';
 import { DashboardComponent } from './dashboard.component';
+
+import { provideMockStore } from '@ngrx/store/testing';
+import { BookingsFacade } from '@org/bookings';
+import { MoviesFacade } from '@org/movies';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -17,11 +18,13 @@ describe('DashboardComponent', () => {
       declarations: [DashboardComponent],
       imports: [
         NoopAnimationsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatGridListModule,
-        MatIconModule,
-        MatMenuModule,
+        MaterialModule
+      ],
+      providers: [
+        BookingsFacade,
+        CinemasFacade,
+        MoviesFacade,
+        provideMockStore({})
       ]
     }).compileComponents();
   }));
