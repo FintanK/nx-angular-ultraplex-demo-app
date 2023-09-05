@@ -54,13 +54,8 @@ Targets can be defined in the `package.json` or `projects.json`. Learn more [in 
 ## Outstanding tasks
 
 - Pagination
-
 - Add a new screening for a specific movie and screen
-
 - Add a new booking for a specific screening and the number of seats
-
-
-- Unit Tests with code coverage
 
 ![Code Coverage](code-coverage.png)
 
