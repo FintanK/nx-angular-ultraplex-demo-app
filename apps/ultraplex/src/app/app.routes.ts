@@ -3,6 +3,7 @@ import { BookingsComponent } from '@org/bookings';
 import { CinemasComponent, ScreensComponent } from '@org/cinemas';
 import { MoviesComponent } from '@org/movies';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ScreeningsComponent } from '@org/screenings';
 
 export const appRoutes: Route[] = [
   {
@@ -21,6 +22,10 @@ export const appRoutes: Route[] = [
   {
     path: 'cinemas/:id/screens',
     component: ScreensComponent,
+  },
+  {
+    path: 'cinemas/:id/screenings',
+    component: ScreeningsComponent,
   },
   {
     path: 'bookings',

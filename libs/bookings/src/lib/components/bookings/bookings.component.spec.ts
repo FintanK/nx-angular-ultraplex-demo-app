@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { BookingsFacade } from '../../+state/bookings.facade';
 import { BookingsComponent } from './bookings.component';
 
 describe('BookingsComponent', () => {
@@ -8,6 +10,7 @@ describe('BookingsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BookingsComponent],
+      providers: [BookingsFacade, provideMockStore()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BookingsComponent);

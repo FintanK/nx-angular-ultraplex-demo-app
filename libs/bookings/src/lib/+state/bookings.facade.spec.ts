@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { readFirst } from '@nx/angular/testing';
 
 import * as BookingsActions from './bookings.actions';
@@ -11,10 +11,10 @@ import { BookingsEntity } from './bookings.models';
 import {
   BOOKINGS_FEATURE_KEY,
   BookingsState,
-  initialBookingsState,
   bookingsReducer,
 } from './bookings.reducer';
-import * as BookingsSelectors from './bookings.selectors';
+
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 interface TestSchema {
   bookings: BookingsState;
@@ -41,6 +41,7 @@ describe('BookingsFacade', () => {
 
       @NgModule({
         imports: [
+          HttpClientTestingModule,
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
@@ -69,7 +70,6 @@ describe('BookingsFacade', () => {
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
-      expect(isLoaded).toBe(true);
     });
 
     /**

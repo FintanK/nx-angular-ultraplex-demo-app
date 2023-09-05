@@ -4,12 +4,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, of, switchMap } from 'rxjs';
 import { CinemasService } from '../services/cinemas.service';
 import * as CinemasActions from './cinemas.actions';
+import { ScreeningsService } from '../services/screenings.service';
 @Injectable()
 export class CinemasEffects {
   private actions$ = inject(Actions);
 
   constructor(
     public cinemasService: CinemasService,
+    public screeningsService: ScreeningsService,
     public _snackBar: MatSnackBar
   ) {}
 

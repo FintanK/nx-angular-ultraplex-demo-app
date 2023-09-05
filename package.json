@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "start": "npx nx serve ultraplex",
-    "build": "npx nx build ultraplex",
-    "test": "npx nx test ultraplex --codeCoverage",
-    "lint": "npx nx lint ultraplex",
+    "build": "npx nx run-many --target=build --all",
+    "test": "npx nx run-many --target=test --all --codeCoverage",
+    "lint": "nx run-many --target=lint --all",
     "e2e": "npx nx e2e ultraplex-e2e --watch",
     "e2e:headless": "npx nx e2e ultraplex-e2e",
     "affected:apps": "npx nx affected:apps",

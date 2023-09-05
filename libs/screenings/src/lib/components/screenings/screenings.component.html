@@ -1,0 +1,26 @@
+<div class="container">
+  <h2><a href="/cinemas">Cinemas</a> > Screenings</h2>
+  <p>All screenings for cinema ID: {{ id }}.</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cinema Name</th>
+        <th>Screen Name</th>
+        <th>Movie</th>
+        <th>Runtime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let screening of allScreenings$ | async">
+        <td>{{ screening.id }}</td>
+        <td>{{ screening.cinemaName }}</td>
+        <td>
+          {{ screening.screenName }}
+        </td>
+        <td>{{ screening?.movie?.name }}</td>
+        <td>{{ screening?.movie?.runtime }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

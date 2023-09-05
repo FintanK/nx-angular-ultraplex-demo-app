@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ScreeningsService {
   constructor(public http: HttpClient) {}
 
-  getScreeningsForCinema(cinemaId: number) {
+  public getScreenings(cinemaId: string) {
     return this.http.get(
       'https://develop.hybrid.iov99.com/ultraplex/api/v1/cinemas/' +
         cinemaId +

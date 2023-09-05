@@ -36,3 +36,14 @@ export const addNewScreenFailure = createAction(
   '[Cinemas/API] Add New Screen Failure',
   props<{ error: any }>()
 );
+
+export const loadCinemaScreenings = createAction(
+  '[Cinemas Page] Load Cinema Screenings',
+  props<{ cinemaId: number }>()
+);
+export const loadCinemaScreeningsSuccess = createAction(
+  '[Cinemas/API] Load Cinema Screenings Success'
+);
+export const loadCinemaScreeningsFailure = createAction(
+  '[Cinemas/API] Load Cinema Screenings Failure'
+);

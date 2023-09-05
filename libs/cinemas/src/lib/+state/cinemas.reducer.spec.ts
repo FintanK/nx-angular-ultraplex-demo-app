@@ -12,6 +12,7 @@ describe('Cinemas Reducer', () => {
   const createCinemasEntity = (id: string, name = ''): CinemasEntity => ({
     id,
     name: name || `name-${id}`,
+    screens: [],
   });
 
   describe('valid Cinemas actions', () => {

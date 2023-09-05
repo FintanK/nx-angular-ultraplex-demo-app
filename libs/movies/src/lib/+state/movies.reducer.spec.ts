@@ -12,6 +12,7 @@ describe('Movies Reducer', () => {
   const createMoviesEntity = (id: string, name = ''): MoviesEntity => ({
     id,
     name: name || `name-${id}`,
+    runtime: 1,
   });
 
   describe('valid Movies actions', () => {

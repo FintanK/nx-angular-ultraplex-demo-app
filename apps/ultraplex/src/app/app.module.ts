@@ -15,6 +15,7 @@ import { BookingsModule } from '@org/bookings';
 import { CinemasModule } from '@org/cinemas';
 import { MaterialModule } from '@org/material';
 import { MoviesModule } from '@org/movies';
+import { ScreeningsModule } from '@org/screenings';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -27,6 +28,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     CinemasModule,
     BookingsModule,
     MoviesModule,
+    ScreeningsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
     MaterialModule,
@@ -53,7 +55,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     AppComponent,
     ToolbarComponent,
     SidenavListComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

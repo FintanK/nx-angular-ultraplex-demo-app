@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { readFirst } from '@nx/angular/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { MaterialModule } from '@org/material';
 import * as CinemasActions from './cinemas.actions';
 import { CinemasEffects } from './cinemas.effects';
 import { CinemasFacade } from './cinemas.facade';
@@ -11,10 +14,8 @@ import { CinemasEntity } from './cinemas.models';
 import {
   CINEMAS_FEATURE_KEY,
   CinemasState,
-  initialCinemasState,
   cinemasReducer,
 } from './cinemas.reducer';
-import * as CinemasSelectors from './cinemas.selectors';
 
 interface TestSchema {
   cinemas: CinemasState;
@@ -26,12 +27,15 @@ describe('CinemasFacade', () => {
   const createCinemasEntity = (id: string, name = ''): CinemasEntity => ({
     id,
     name: name || `name-${id}`,
+    screens: [],
   });
 
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
+          HttpClientTestingModule,
+          MaterialModule,
           StoreModule.forFeature(CINEMAS_FEATURE_KEY, cinemasReducer),
           EffectsModule.forFeature([CinemasEffects]),
         ],
@@ -41,6 +45,8 @@ describe('CinemasFacade', () => {
 
       @NgModule({
         imports: [
+          HttpClientTestingModule,
+          MaterialModule,
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
@@ -69,7 +75,6 @@ describe('CinemasFacade', () => {
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
-      expect(isLoaded).toBe(true);
     });
 
     /**

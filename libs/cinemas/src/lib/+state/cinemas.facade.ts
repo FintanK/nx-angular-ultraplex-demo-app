@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { select, Store, Action } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 import * as CinemasActions from './cinemas.actions';
-import * as CinemasFeature from './cinemas.reducer';
 import * as CinemasSelectors from './cinemas.selectors';
 
 @Injectable()
@@ -17,12 +16,16 @@ export class CinemasFacade {
   allCinemas$ = this.store.pipe(select(CinemasSelectors.selectAllCinemas));
   selectedCinemas$ = this.store.pipe(select(CinemasSelectors.selectEntity));
 
-  /**
-   * Use the initialization action to perform one
-   * or more tasks in your Effects.
-   */
   init() {
     this.store.dispatch(CinemasActions.initCinemas());
+  }
+
+  loadCinemaScreenings(cinemaId: number) {
+    this.store.dispatch(
+      CinemasActions.loadCinemaScreenings({
+        cinemaId,
+      })
+    );
   }
 
   addNewCinema(newCinemaName: string) {

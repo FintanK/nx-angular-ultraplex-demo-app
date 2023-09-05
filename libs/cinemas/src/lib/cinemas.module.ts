@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromCinemas from './+state/cinemas.reducer';
+import { StoreModule } from '@ngrx/store';
+import { MaterialModule } from '@org/material';
 import { CinemasEffects } from './+state/cinemas.effects';
 import { CinemasFacade } from './+state/cinemas.facade';
+import * as fromCinemas from './+state/cinemas.reducer';
 import { CinemasComponent } from './components/cinemas/cinemas.component';
-import { CinemasService } from './services/cinemas.service';
-import { MaterialModule } from '@org/material';
 import { ScreensComponent } from './components/screens/screens.component';
-import { FormsModule } from '@angular/forms';
+import { CinemasService } from './services/cinemas.service';
 
 @NgModule({
   imports: [

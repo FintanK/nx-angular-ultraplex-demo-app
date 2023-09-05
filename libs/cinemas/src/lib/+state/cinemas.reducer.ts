@@ -39,6 +39,12 @@ const reducer = createReducer(
   on(CinemasActions.loadCinemasFailure, (state, { error }) => ({
     ...state,
     error,
+  })),
+
+  on(CinemasActions.loadCinemaScreenings, (state) => ({
+    ...state,
+    loaded: false,
+    error: null,
   }))
 );
 

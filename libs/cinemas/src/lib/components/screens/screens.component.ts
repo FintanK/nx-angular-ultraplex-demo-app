@@ -9,10 +9,9 @@ import { ScreenEntity } from '../../+state/cinemas.models';
   styleUrls: ['./screens.component.scss'],
 })
 export class ScreensComponent implements OnInit {
-  id: string | null = null;
-  screens: ScreenEntity[] = [];
-
-  newScreenName!: string;
+  public id: string | null = null;
+  public screens: ScreenEntity[] = [];
+  public newScreenName!: string;
 
   constructor(
     public route: ActivatedRoute,

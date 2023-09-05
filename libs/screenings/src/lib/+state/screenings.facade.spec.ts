@@ -5,28 +5,33 @@ import { Store, StoreModule } from '@ngrx/store';
 import { readFirst } from '@nx/angular/testing';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '@org/material';
-import * as MoviesActions from './movies.actions';
-import { MoviesEffects } from './movies.effects';
-import { MoviesFacade } from './movies.facade';
-import { MoviesEntity } from './movies.models';
+import * as ScreeningsActions from './screenings.actions';
+import { ScreeningsEffects } from './screenings.effects';
+import { ScreeningsFacade } from './screenings.facade';
+import { ScreeningsEntity } from './screenings.models';
 import {
-  MOVIES_FEATURE_KEY,
-  MoviesState,
-  moviesReducer,
-} from './movies.reducer';
+  SCREENINGS_FEATURE_KEY,
+  ScreeningsState,
+  screeningsReducer,
+} from './screenings.reducer';
 
 interface TestSchema {
-  movies: MoviesState;
+  screenings: ScreeningsState;
 }
 
-describe('MoviesFacade', () => {
-  let facade: MoviesFacade;
+describe('ScreeningsFacade', () => {
+  let facade: ScreeningsFacade;
   let store: Store<TestSchema>;
-  const createMoviesEntity = (id: string, name = ''): MoviesEntity => ({
+  const createScreeningsEntity = (id: string, name = ''): ScreeningsEntity => ({
     id,
-    name: name || `name-${id}`,
-    runtime: 1,
+    cinemaName: name || `name-${id}`,
+    screenName: 'screenName',
+    start: new Date(),
+    movie: {
+      id: '1',
+      name: 'name',
+      runtime: 1,
+    },
   });
 
   describe('used in NgModule', () => {
@@ -34,65 +39,66 @@ describe('MoviesFacade', () => {
       @NgModule({
         imports: [
           HttpClientModule,
-          StoreModule.forFeature(MOVIES_FEATURE_KEY, moviesReducer),
-          EffectsModule.forFeature([MoviesEffects]),
+          StoreModule.forFeature(SCREENINGS_FEATURE_KEY, screeningsReducer),
+          EffectsModule.forFeature([ScreeningsEffects]),
         ],
-        providers: [MoviesFacade],
+        providers: [ScreeningsFacade],
       })
       class CustomFeatureModule {}
 
       @NgModule({
         imports: [
           HttpClientModule,
-          MaterialModule,
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
         ],
-        providers: [],
       })
       class RootModule {}
       TestBed.configureTestingModule({ imports: [RootModule] });
 
       store = TestBed.inject(Store);
-      facade = TestBed.inject(MoviesFacade);
+      facade = TestBed.inject(ScreeningsFacade);
     });
 
     /**
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allMovies$);
+      let list = await readFirst(facade.allScreenings$);
       let isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
-      facade.init();
+      facade.init('1');
 
-      list = await readFirst(facade.allMovies$);
+      list = await readFirst(facade.allScreenings$);
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
     });
 
     /**
-     * Use `loadMoviesSuccess` to manually update list
+     * Use `loadScreeningsSuccess` to manually update list
      */
-    it('allMovies$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allMovies$);
+    it('allScreenings$ should return the loaded list; and loaded flag == true', async () => {
+      let list = await readFirst(facade.allScreenings$);
       let isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
       store.dispatch(
-        MoviesActions.loadMoviesSuccess({
-          movies: [createMoviesEntity('AAA'), createMoviesEntity('BBB')],
+        ScreeningsActions.loadScreeningsSuccess({
+          screenings: [
+            createScreeningsEntity('AAA'),
+            createScreeningsEntity('BBB'),
+          ],
         })
       );
 
-      list = await readFirst(facade.allMovies$);
+      list = await readFirst(facade.allScreenings$);
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(2);
